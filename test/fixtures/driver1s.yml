@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fn: MyText
+  sn: MyText
+  ln: MyText
+  birthday: 2017-04-27
+  inn: 1
+  series_p: 1
+  number_p: 1
+
+two:
+  fn: MyText
+  sn: MyText
+  ln: MyText
+  birthday: 2017-04-27
+  inn: 1
+  series_p: 1
+  number_p: 1

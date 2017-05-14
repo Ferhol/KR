@@ -1,0 +1,28 @@
+= form_for @car do |f|
+  - if @car.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@car.errors.count, "error")} prohibited this car from being saved:"
+      %ul
+        - @car.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :mark
+    = f.text_area :mark
+  .field
+    = f.label :class_c
+    = f.select :class_c, [['Бизнес','Бизнес'],['Эконом','Эконом']]
+  .field
+    = f.label :license_plate
+    = f.text_area :license_plate
+  .field
+    = f.label :color
+    = f.text_area :color
+  .field
+    = f.label :year_of_issue
+    = f.number_field :year_of_issue
+  .field
+    = f.label :driver1
+    = f.text_field :driver1_id
+  .actions
+    = f.submit 'Сохранить'

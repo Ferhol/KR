@@ -1,0 +1,56 @@
+= form_for @order do |f|
+  - if @order.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@order.errors.count, "error")} prohibited this order from being saved:"
+      %ul
+        - @order.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :date_o
+    = f.date_select :date_o
+  .field
+    = f.label :time_o
+    = f.time_select :time_o
+  .field
+    = f.label :address_o
+    = f.text_area :address_o
+  .field
+    = f.label :address_p
+    = f.text_area :address_p
+  .field
+    = f.label :number_p
+    = f.number_field :number_p
+  .field
+    = f.label :route_length
+    = f.text_field :route_length
+  .field
+    = f.label :driver1
+    = f.text_field :driver1_id
+  .field
+    = f.label :rate
+    = f.text_field :rate_id
+  .panel.panel-success
+    .panel-heading
+      .panel-body
+        Тариф
+      .row
+        =f.fields_for :car do |fm|
+          .col-md-12
+            .form-group
+              = fm.label :name_r, "name_r"
+              = fm.text_area :name_r
+          .col-md-12
+            .form-group
+              = fm.label :times_of_day, "times_of_day"
+              = fm.select :times_of_day, [['День','День'],['Ночь','Ночь']]
+          .col-md-12
+            .form-group
+              = fm.label :range, "range"
+              = fm.select :range, [['В пределах МКАД','В пределах МКАД'],['За МКАД','За МКАД'],['Подмосковье','Подмосковье']]
+          .col-md-12
+            .form-group
+              = fm.label :price, "price"
+              = fm.text_field :price
+  .actions
+    = f.submit 'Сохранить'

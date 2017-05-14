@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Fn:
+  = @driver1.fn
+%p
+  %b Sn:
+  = @driver1.sn
+%p
+  %b Ln:
+  = @driver1.ln
+%p
+  %b Birthday:
+  = @driver1.birthday
+%p
+  %b Inn:
+  = @driver1.inn
+%p
+  %b Series p:
+  = @driver1.series_p
+%p
+  %b Number p:
+  = @driver1.number_p
+
+= link_to 'Edit', edit_driver1_path(@driver1)
+\|
+= link_to 'Back', driver1s_path

@@ -1,0 +1,33 @@
+%h1 Список водителей
+
+%table
+  %thead
+    %tr
+      %th Фамилия
+      %th Имя
+      %th Отчество
+      %th День рождения
+      %th ИНН
+      %th Серия паспорта
+      %th Номер паспорта
+      %th
+      %th
+      %th
+
+  %tbody
+    - @driver1s.each do |driver1|
+      %tr
+        %td= driver1.fn
+        %td= driver1.sn
+        %td= driver1.ln
+        %td= driver1.birthday
+        %td= driver1.inn
+        %td= driver1.series_p
+        %td= driver1.number_p
+        %td= link_to 'Показать', driver1
+        %td= link_to 'Править', edit_driver1_path(driver1)
+        %td= link_to 'Уничтожить', driver1, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'Новый водитель', new_driver1_path

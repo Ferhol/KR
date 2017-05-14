@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name_r: MyText
+  times_of_day: MyText
+  range: MyText
+  price: 1.5
+
+two:
+  name_r: MyText
+  times_of_day: MyText
+  range: MyText
+  price: 1.5

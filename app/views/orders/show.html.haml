@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Дата:
+  = @order.date_o
+%p
+  %b Время:
+  = @order.time_o
+%p
+  %b Адрес подачи такси:
+  = @order.address_o
+%p
+  %b Предположительный адрес следования такси:
+  = @order.address_p
+%p
+  %b Количество пассажиров:
+  = @order.number_p
+%p
+  %b Ориентировочная длина маршрута:
+  = @order.route_length
+%p
+  %b Водитель:
+  = @order.driver1
+%p
+  %b Тариф:
+  = @order.rate
+
+= link_to 'Править', edit_order_path(@order)
+\|
+= link_to 'Назад', orders_path

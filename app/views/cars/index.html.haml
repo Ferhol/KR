@@ -1,0 +1,31 @@
+%h1 Список автомобилей
+
+%table
+  %thead
+    %tr
+      %th Марка
+      %th Класс
+      %th Госномер
+      %th Цвет
+      %th Год выпуска
+      %th Водитель
+      %th
+      %th
+      %th
+
+  %tbody
+    - @cars.each do |car|
+      %tr
+        %td= car.mark
+        %td= car.class_c
+        %td= car.license_plate
+        %td= car.color
+        %td= car.year_of_issue
+        %td= car.driver1
+        %td= link_to 'Показать', car
+        %td= link_to 'Править', edit_car_path(car)
+        %td= link_to 'Уничтожить', car, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'Новый автомобиль', new_car_path

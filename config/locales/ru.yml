@@ -1,0 +1,99 @@
+ru:
+  app:
+    name: Базовое приложение
+    company:
+      short_name: МПУ
+      department: Кафедра
+  helpers:
+    submit:
+      create: Сохранить
+      submit: Сохранить
+      update: Сохранить
+  buttons:
+    edit: Редактировать
+    destroy: Удалить
+    show: Показать
+    confirm:
+      user: Действительно удалить пользователя?
+      role: Действительно удалить роль?
+    new: 
+      user: Новый пользователь
+      role: Новая роль
+  headers:
+    users:
+      edit: Редактирование пользователя
+      new: Новый пользователь
+      index: Список пользователей
+    roles:
+      index: Список возможных ролей пользователей
+      edit: Редактирование роли
+      new: Новая роль
+  views:
+    pagination:
+      first: ⇤
+      last: ⇥
+      previous: ←
+      next: →
+      truncate: …
+  activerecord:
+    models:
+      user: Пользователь
+      driver1: Водитель
+      car: Автомобиль
+      order: Заказ
+      rate: Тариф
+    attributes:
+      user:
+        email: Пользовательское имя/электронная почта
+        birthday: Дата рождения
+        password: Пароль
+        password_confirmation: Подтверждение пароля
+        reset_password_email_sent_at: Дата отправления письма для смены пароля
+        activation_state: Статус активации
+        activation_token_expires_at: Дата прекращения действия токена активации
+        last_login_at: Время последнего входа в систему
+        role_users: Роли
+      role: 
+        name: Обозначение
+        info: Краткое название
+        full_info: Описание
+      driver1:
+        fn: Фамилия
+        sn: Имя
+        ln: Отчество
+        birthday: День рождения
+        inn: ИНН
+        series_p: Серия паспорта
+        number_p: Номер паспорта
+      car:
+        mark: Марка
+        class_c: Класс
+        license_plate: Госномер автомобиля
+        color: Цвет
+        year_of_issue: Год выпуска
+        driver1: Водитель
+      order:
+        date_o: Дата
+        time_o: Время
+        address_o: Адрес подачи такси
+        address_p: Предположительный адрес следования такси
+        number_p: Количество пассажиров
+        route_length: Ориентировочная длина маршрута
+        driver1: Водитель
+        rate: Тариф
+      rate:
+        name_r: Название
+        times_of_day: Время суток
+        range: Дальность поездки с точки зрения удалённости от центра Москвы
+        price: Цена за километр пути
+      # nested_start
+      role_user: &role_users
+      # nested_finish
+        role: Роль
+        role_id: Роль
+        data: Параметры
+      # nested_start
+      user/role_users:
+        <<: *role_users
+      # nested_finish
+          

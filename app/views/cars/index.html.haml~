@@ -1,0 +1,31 @@
+%h1 Listing cars
+
+%table
+  %thead
+    %tr
+      %th Mark
+      %th Class c
+      %th License plate
+      %th Color
+      %th Year of issue
+      %th Driver1
+      %th
+      %th
+      %th
+
+  %tbody
+    - @cars.each do |car|
+      %tr
+        %td= car.mark
+        %td= car.class_c
+        %td= car.license_plate
+        %td= car.color
+        %td= car.year_of_issue
+        %td= car.driver1
+        %td= link_to 'Show', car
+        %td= link_to 'Edit', edit_car_path(car)
+        %td= link_to 'Destroy', car, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Car', new_car_path

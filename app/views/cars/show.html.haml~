@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Mark:
+  = @car.mark
+%p
+  %b Class c:
+  = @car.class_c
+%p
+  %b License plate:
+  = @car.license_plate
+%p
+  %b Color:
+  = @car.color
+%p
+  %b Year of issue:
+  = @car.year_of_issue
+%p
+  %b Driver1:
+  = @car.driver1
+
+= link_to 'Edit', edit_car_path(@car)
+\|
+= link_to 'Back', cars_path

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mark: MyText
+  class_c: MyText
+  license_plate: MyText
+  color: MyText
+  year_of_issue: 1
+  driver1: one
+
+two:
+  mark: MyText
+  class_c: MyText
+  license_plate: MyText
+  color: MyText
+  year_of_issue: 1
+  driver1: two

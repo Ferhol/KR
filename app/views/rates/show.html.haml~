@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Название:
+  = @rate.name_r
+%p
+  %b Время суток:
+  = @rate.times_of_day
+%p
+  %b Range:
+  = @rate.range
+%p
+  %b Price:
+  = @rate.price
+
+= link_to 'Править', edit_rate_path(@rate)
+\|
+= link_to 'Назад', rates_path

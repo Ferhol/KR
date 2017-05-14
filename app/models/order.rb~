@@ -1,0 +1,14 @@
+class Order < ApplicationRecord
+  belongs_to :driver1
+  belongs_to :rate, inverse_of: :orders
+  accepts_nested_attributes_for :rate, allow_destroy: true 
+
+  validates :date_o, presence: true
+  validates :time_o, presence: true
+  validates :address_o, presence: true
+  validates :address_p, presence: true
+  validates :number_p, presence: true, numericality:
+    {only_integer: true}
+  validates :route_length, presence: true, numericality:
+    {only_float: true}
+end

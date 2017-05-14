@@ -1,0 +1,15 @@
+class CreateDrivers < ActiveRecord::Migration[5.0]
+  def change
+    create_table :drivers do |t|
+      t.text :fn
+      t.text :sn
+      t.text :ln
+      t.date :birthday
+      t.integer :inn
+      t.integer :series_p
+      t.integer :number_p
+
+      t.timestamps
+    end
+  end
+end

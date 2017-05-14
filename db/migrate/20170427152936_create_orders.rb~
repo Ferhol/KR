@@ -1,0 +1,16 @@
+class CreateOrders < ActiveRecord::Migration[5.0]
+  def change
+    create_table :orders do |t|
+      t.date :date_o
+      t.time :time_o
+      t.text :address_o
+      t.text :address_p
+      t.integer :number_p
+      t.float :route_length
+      t.references :driver1, foreign_key: true
+      t.references :rate, foreign_key: true
+
+      t.timestamps
+    end
+  end
+end

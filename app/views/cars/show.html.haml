@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Марка:
+  = @car.mark
+%p
+  %b Класс:
+  = @car.class_c
+%p
+  %b Госномер:
+  = @car.license_plate
+%p
+  %b Цвет:
+  = @car.color
+%p
+  %b Год выпуска:
+  = @car.year_of_issue
+%p
+  %b Водитель:
+  = @car.driver1
+
+= link_to 'Править', edit_car_path(@car)
+\|
+= link_to 'Назад', cars_path

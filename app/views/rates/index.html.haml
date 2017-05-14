@@ -1,0 +1,27 @@
+%h1 Список тарифов
+
+%table
+  %thead
+    %tr
+      %th Название
+      %th Время суток
+      %th Дальность поездки с точки зрения удалённости от центра Москвы
+      %th Цена за километр пути
+      %th
+      %th
+      %th
+
+  %tbody
+    - @rates.each do |rate|
+      %tr
+        %td= rate.name_r
+        %td= rate.times_of_day
+        %td= rate.range
+        %td= rate.price
+        %td= link_to 'Показать', rate
+        %td= link_to 'Править', edit_rate_path(rate)
+        %td= link_to 'Уничтожить', rate, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'Новый тариф', new_rate_path

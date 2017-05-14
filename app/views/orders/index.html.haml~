@@ -1,0 +1,35 @@
+%h1 Список заказов
+
+%table
+  %thead
+    %tr
+      %th Дата
+      %th Время
+      %th Адрес подачи такси
+      %th Предположительный адрес следования такси
+      %th Количество пассажиров
+      %th Ориентировочная длина маршрута 
+      %th Водитель
+      %th Тариф
+      %th
+      %th
+      %th
+
+  %tbody
+    - @orders.each do |order|
+      %tr
+        %td= order.date_o
+        %td= order.time_o
+        %td= order.address_o
+        %td= order.address_p
+        %td= order.number_p
+        %td= order.route_length
+        %td= order.driver1
+        %td= order.rate
+        %td= link_to 'Показать', order
+        %td= link_to 'Править', edit_order_path(order)
+        %td= link_to 'Унижтожить', order, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'Новый Заказ', new_order_path

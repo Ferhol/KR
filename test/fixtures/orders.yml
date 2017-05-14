@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date_o: 2017-04-27
+  time_o: 2017-04-27 18:29:36
+  address_o: MyText
+  address_p: MyText
+  number_p: 1
+  route_length: 1.5
+  driver1: one
+  rate: one
+
+two:
+  date_o: 2017-04-27
+  time_o: 2017-04-27 18:29:36
+  address_o: MyText
+  address_p: MyText
+  number_p: 1
+  route_length: 1.5
+  driver1: two
+  rate: two

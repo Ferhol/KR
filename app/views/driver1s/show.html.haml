@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Фамилия:
+  = @driver1.fn
+%p
+  %b Имя:
+  = @driver1.sn
+%p
+  %b Отчество:
+  = @driver1.ln
+%p
+  %b День рождения:
+  = @driver1.birthday
+%p
+  %b ИНН:
+  = @driver1.inn
+%p
+  %b Серия паспорта:
+  = @driver1.series_p
+%p
+  %b Номер паспорта:
+  = @driver1.number_p
+
+= link_to 'Править', edit_driver1_path(@driver1)
+\|
+= link_to 'Назад', driver1s_path

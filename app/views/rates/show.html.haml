@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Название:
+  = @rate.name_r
+%p
+  %b Время суток:
+  = @rate.times_of_day
+%p
+  %b Дальность поездки с точки зрения удалённости от центра Москвы :
+  = @rate.range
+%p
+  %b Цена за километр пути:
+  = @rate.price
+
+= link_to 'Править', edit_rate_path(@rate)
+\|
+= link_to 'Назад', rates_path
