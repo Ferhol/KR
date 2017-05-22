@@ -1,7 +1,19 @@
-%h1 Editing order
+%h1 Править данные заказа
 
 = render 'form'
 
-= link_to 'Show', @order
+= link_to 'Показать', @order
 \|
-= link_to 'Back', orders_path
+= link_to 'Назад', orders_path
+=breadcrumb_tag do
+  %li.active
+    = t('headers.orders.edit')
+  %li
+    = link_to(@order.address_o, @order)
+  %li
+    = link_to 'Список автомобилей', cars_path
+    
+.page-header
+  %h1= t('headers.cars.edit')
+
+= render 'form'

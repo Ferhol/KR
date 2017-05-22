@@ -1,7 +1,7 @@
-%h1 Editing car
+%h1 Править данные автомобиля
 
 = render 'form'
 
-= link_to 'Show', @car
+= link_to 'Показать', @car
 \|
-= link_to 'Back', cars_path
+= link_to 'Назад', cars_path

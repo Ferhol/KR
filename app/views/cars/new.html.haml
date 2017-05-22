@@ -1,5 +1,11 @@
-%h1 Новый автомобиль
+- if @current_user.present?
+  =breadcrumb_tag do
+    %li.active
+      = t('headers.cars.new')
+    %li
+      = link_to 'Список автомобилей', cars_path
+    
+.page-header
+  %h1= t('headers.cars.new')
 
 = render 'form'
-
-= link_to 'Назад', cars_path

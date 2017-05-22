@@ -1,27 +1,35 @@
 %p#notice= notice
+=breadcrumb_tag do
+  %li.active
+    = @driver1.fn
+  %li
+    = link_to 'Список водителей', driver1s_path
+    
+%h1= @driver1.fn
 
-%p
-  %b Fn:
+%p.list-group-item
+  %b Фамилия:
   = @driver1.fn
-%p
-  %b Sn:
+%p.list-group-item
+  %b Имя:
   = @driver1.sn
-%p
-  %b Ln:
+%p.list-group-item
+  %b Отчество:
   = @driver1.ln
-%p
-  %b Birthday:
+%p.list-group-item
+  %b День рождения:
   = @driver1.birthday
-%p
-  %b Inn:
+%p.list-group-item
+  %b ИНН:
   = @driver1.inn
-%p
-  %b Series p:
+%p.list-group-item
+  %b Серия паспорта:
   = @driver1.series_p
-%p
-  %b Number p:
+%p.list-group-item
+  %b Номер паспорта:
   = @driver1.number_p
+%p.list-group-item
+  %b Марка:
+  = @driver1.cars
 
-= link_to 'Edit', edit_driver1_path(@driver1)
-\|
-= link_to 'Back', driver1s_path
+

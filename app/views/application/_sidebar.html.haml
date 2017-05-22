@@ -23,6 +23,14 @@
           = link_to(url_for(controller: item[:controller], action: item[:action]), class: item[:class]) do
             = fa_icon(item[:icon], class: 'menu-icon')
             = item[:name]
+    %li
+      = link_to driver1s_path, class: 'subitem' do
+        = fa_icon "file-text"
+        = t('app.driver1')
+    %li
+      = link_to orders_path, class: 'subitem' do
+        = fa_icon "file-text"
+        = t('app.order')
     %li.footer
       %div
         © В.Ю. Радыгин

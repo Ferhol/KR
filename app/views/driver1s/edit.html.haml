@@ -1,7 +1,12 @@
-%h1 Править данные водителя
+=breadcrumb_tag do
+  %li.active
+    = t('headers.driver1s.edit')
+  %li
+    = link_to(@driver1.fn, @driver1)
+  %li
+    = link_to 'Список автомобилей', driver1s_path
+    
+.page-header
+  %h1= t('headers.driver1s.edit')
 
 = render 'form'
-
-= link_to 'Показать', @driver1
-\|
-= link_to 'Назад', driver1s_path

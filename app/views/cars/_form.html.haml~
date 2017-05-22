@@ -6,23 +6,28 @@
         - @car.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :mark
-    = f.text_area :mark
-  .field
-    = f.label :class_c
-    = f.select :class_c, [['Бизнес','Бизнес'],['Эконом','Эконом']]
-  .field
-    = f.label :license_plate
-    = f.text_area :license_plate
-  .field
-    = f.label :color
-    = f.text_area :color
-  .field
-    = f.label :year_of_issue
-    = f.number_field :year_of_issue
-  .field
-    = f.label :driver1
-    = f.text_field :driver1_id
+  .col-md-6
+    .form-group
+      = f.label :mark
+      = f.text_area :mark
+  .col-md-6
+    .form-group
+      = f.label :license_plate
+      = f.text_area :license_plate
+  .col-md-6
+    .form-group
+      = f.label :color
+      = f.text_area :color
+  .col-md-12
+    .form-group
+      = f.label :class_c
+      = f.select :class_c, [['Бизнес','Бизнес'],['Эконом','Эконом']]
+  .col-md-6
+    .form-group
+      = f.label :year_of_issue
+      = f.number_field :year_of_issue
   .actions
-    = f.submit 'Save'
+  .col-md-12
+    .form-group
+      = f.submit 'Сохранить', class: 'btn btn-primary'
+      = fa_icon :edit

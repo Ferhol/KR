@@ -1,6 +1,5 @@
 class Car < ApplicationRecord
   belongs_to :driver1, inverse_of: :cars
-  validates_presence_of :driver1
 
   validates :mark, presence: true
   validates :class_c, presence: true

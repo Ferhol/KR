@@ -1,6 +1,14 @@
-%h1 Список тарифов
+=breadcrumb_tag do
+  %li.active
+    Список тарифов
+.page-header
+  %h1= t('headers.cars.index')
 
-%table
+%table.table.table-hover.table-striped
+  %caption
+    = link_to new_rate_path, class: 'btn btn-success' do
+      = fa_icon :plus
+      = t('buttons.new.rate')
   %thead
     %tr
       %th Название
@@ -13,15 +21,18 @@
 
   %tbody
     - @rates.each do |rate|
-      %tr
-        %td= rate.name_r
-        %td= rate.times_of_day
-        %td= rate.range
-        %td= rate.price
-        %td= link_to 'Показать', rate
-        %td= link_to 'Править', edit_rate_path(rate)
-        %td= link_to 'Уничтожить', rate, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'Новый тариф', new_rate_path
+      %tr.table-active
+        %td.center= rate.name_r
+        %td.center= rate.times_of_day
+        %td.center= rate.range
+        %td.center= rate.price
+        %td.right
+          = link_to edit_rate_path(rate), class: 'btn btn-primary' do
+            = fa_icon :edit
+            = t('buttons.edit')
+          = link_to rate, class: 'btn btn-info' do
+            = fa_icon "eye"
+            = t('buttons.show')
+          = link_to rate, :method => :delete, :data => { :confirm => t('buttons.confirm.rate') }, class: 'btn btn-danger' do
+            = fa_icon :times
+            = t('buttons.destroy')

@@ -1,24 +1,27 @@
 %p#notice= notice
+=breadcrumb_tag do
+  %li.active
+    = @car.mark
+  %li
+    = link_to 'Списов автомобилей', cars_path
 
-%p
-  %b Mark:
+%h1= @car.mark
+
+%p.list-group-item
+  %b Марка:
   = @car.mark
-%p
-  %b Class c:
+%p.list-group-item
+  %b Класс:
   = @car.class_c
-%p
-  %b License plate:
+%p.list-group-item
+  %b Госномер:
   = @car.license_plate
-%p
-  %b Color:
+%p.list-group-item
+  %b Цвет:
   = @car.color
-%p
-  %b Year of issue:
+%p.list-group-item
+  %b Год выпуска:
   = @car.year_of_issue
-%p
-  %b Driver1:
+%p.list-group-item
+  %b Водитель:
   = @car.driver1
-
-= link_to 'Edit', edit_car_path(@car)
-\|
-= link_to 'Back', cars_path

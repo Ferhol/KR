@@ -1,7 +1,12 @@
-%h1 Править данные заказа
+=breadcrumb_tag do
+  %li.active
+    = t('headers.orders.edit')
+  %li
+    = link_to(@order.address_o, @order)
+  %li
+    = link_to 'Список заказов', orders_path
+    
+.page-header
+  %h1= t('headers.orders.edit')
 
 = render 'form'
-
-= link_to 'Показать', @order
-\|
-= link_to 'Назад', orders_path

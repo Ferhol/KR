@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+  skip_before_action :check_ctr_auth, only: [:new, :create], raise: false
+  skip_before_filter :require_login, :only => [:new, :create]
 
   # GET /orders
   # GET /orders.json
@@ -15,6 +17,7 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+    @order.rate = Rate.new
   end
 
   # GET /orders/1/edit
@@ -69,6 +72,59 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:date_o, :time_o, :address_o, :address_p, :number_p, :route_length, :driver1_id, :rate_id, rates_attributes: [:id, :_destroy, :name_r, :times_of_day, :range, :price])
+      params.require(:order).permit(:date_o, :time_o, :address_o, :address_p, :number_p, :route_length, :driver1_id, :rate_id, rate_attributes: [:id, :_destroy, :name_r, :times_of_day, :range, :price])
+    end
+    def check_ctr_auth()
+      case action_name.to_sym
+      when :show
+        if @current_role_user.try(:is_admin?)
+          return true
+        end
+        if @current_role_user.try(:is_operator?)
+          return true
+        end
+      when :index
+        if @current_role_user.try(:is_admin?)
+          return true
+        end
+        if @current_role_user.try(:is_operator?)
+          return true
+        end
+      when :new
+        if @current_role_user.try(:is_admin?)
+          return true
+        end
+        if @current_role_user.try(:is_operator?)
+          return false
+        end
+      when :create
+        if @current_role_user.try(:is_admin?)
+          return true
+        end
+        if @current_role_user.try(:is_operator?)
+          return false
+        end
+      when :edit
+        if @current_role_user.try(:is_operator?)
+          return false
+        end
+        if @current_role_user.try(:is_admin?)
+          return true
+        end
+      when :destroy
+        if @current_role_user.try(:is_operator?)
+          return false
+        end
+        if @current_role_user.try(:is_admin?)
+          return true
+        end
+      else
+        if @current_role_user.try(:is_operator?)
+          return false
+        end
+        if @current_role_user.try(:is_admin?)
+          return true
+        end
+      end
     end
 end

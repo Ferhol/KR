@@ -1,5 +1,11 @@
-%h1 Новый заказ
+- if @current_user.present?
+  =breadcrumb_tag do
+    %li.active
+      = t('headers.orders.new')
+    %li
+      = link_to 'Список заказов', orders_path
+    
+.page-header
+  %h1= t('headers.orders.new')
 
 = render 'form'
-
-= link_to 'Назад', orders_path

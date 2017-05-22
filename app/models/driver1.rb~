@@ -1,6 +1,6 @@
 class Driver1 < ApplicationRecord
-  has_many :cars, inverse_of: :driver1
-  accepts_nested_attributes_for :cars, allow_destroy: true 
+  has_many :cars, dependent: :destroy, inverse_of: :driver1
+  accepts_nested_attributes_for :cars, allow_destroy: true
 
   has_many :orders
 

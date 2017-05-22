@@ -1,5 +1,7 @@
 class CarsController < ApplicationController
   before_action :set_car, only: [:show, :edit, :update, :destroy]
+  skip_before_action :check_ctr_auth, only: [:new, :create], raise: false
+  skip_before_filter :require_login, :only => [:new, :create]
 
   # GET /cars
   # GET /cars.json

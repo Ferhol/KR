@@ -1,6 +1,14 @@
-%h1 Список тарифов
+=breadcrumb_tag do
+  %li.active
+    Список тарифов
+.page-header
+  %h1= t('headers.cars.index')
 
-%table
+%table.table.table-hover.table-striped
+  %caption
+    = link_to new_rate_path, class: 'btn btn-success' do
+      = fa_icon :plus
+      = t('buttons.new.rate')
   %thead
     %tr
       %th Название
@@ -20,7 +28,7 @@
         %td= rate.price
         %td= link_to 'Показать', rate
         %td= link_to 'Править', edit_rate_path(rate)
-        %td= link_to 'Учтожить', rate, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to 'Уничтожить', rate, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

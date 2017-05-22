@@ -1,18 +1,21 @@
 %p#notice= notice
+=breadcrumb_tag do
+  %li.active
+    = @rate.name_r
+  %li
+    = link_to 'Список тарифов', rates_path
 
-%p
+%h1= @rate.name_r
+
+%p.list-group-item
   %b Название:
   = @rate.name_r
-%p
+%p.list-group-item
   %b Время суток:
   = @rate.times_of_day
-%p
+%p.list-group-item
   %b Дальность поездки с точки зрения удалённости от центра Москвы :
   = @rate.range
-%p
+%p.list-group-item
   %b Цена за километр пути:
   = @rate.price
-
-= link_to 'Править', edit_rate_path(@rate)
-\|
-= link_to 'Назад', rates_path

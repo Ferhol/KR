@@ -1,30 +1,46 @@
 %p#notice= notice
+=breadcrumb_tag do
+  %li.active
+    = @order.address_o
+  %li
+    = link_to 'Списов заказов', orders_path
 
-%p
+%h1= @order.address_o
+
+%p.list-group-item
   %b Дата:
   = @order.date_o
-%p
+%p.list-group-item
   %b Время:
   = @order.time_o
-%p
+%p.list-group-item
   %b Адрес подачи такси:
   = @order.address_o
-%p
+%p.list-group-item
   %b Предположительный адрес следования такси:
   = @order.address_p
-%p
+%p.list-group-item
   %b Количество пассажиров:
   = @order.number_p
-%p
+%p.list-group-item
   %b Ориентировочная длина маршрута:
   = @order.route_length
-%p
-  %b Водитель:
-  = @order.driver1
-%p
-  %b Тариф:
-  = @order.rate
 
-= link_to 'Edit', edit_order_path(@order)
-\|
-= link_to 'Back', orders_path
+%p.list-group-item
+  %b Тариф
+
+%p.list-group-item
+  %b Название тарифа:
+  = @order.rate.name_r
+
+%p.list-group-item
+  %b Время суток:
+  = @order.rate.times_of_day
+
+%p.list-group-item
+  %b Дальность поездки с точки зрения удалённости от центра Москвы:
+  = @order.rate.range
+
+%p.list-group-item
+  %b Цена за километр пути:
+  = @order.rate.price

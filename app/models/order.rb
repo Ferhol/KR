@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :driver1
-  belongs_to :rate, inverse_of: :order
-  accepts_nested_attributes_for :rate, allow_destroy: true 
+  belongs_to :rate, dependent: :destroy, inverse_of: :order
+  accepts_nested_attributes_for :rate, allow_destroy: true
 
   validates :date_o, presence: true
   validates :time_o, presence: true

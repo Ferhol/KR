@@ -1,5 +1,11 @@
-%h1 Новый тариф
+- if @current_user.present?
+  =breadcrumb_tag do
+    %li.active
+      = t('headers.rates.new')
+    %li
+      = link_to 'Список тарифов', rates_path
+    
+.page-header
+  %h1= t('headers.rates.new')
 
 = render 'form'
-
-= link_to 'Назад', rates_path

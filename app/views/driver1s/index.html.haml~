@@ -1,33 +1,50 @@
-%h1 Список водителей
+=breadcrumb_tag do
+  %li.active
+    Список водителей
+.page-header
+  %h1= t('headers.driver1s.index')
 
-%table
+%table.table.table-hover.table-striped
+  %caption
+    = link_to new_driver1_path, class: 'btn btn-success' do
+      = fa_icon :plus
+      = t('buttons.new.driver1')      
   %thead
     %tr
-      %th Фамиоия
+      %th Фамилия
       %th Имя
       %th Отчество
       %th День рождения
       %th ИНН
       %th Серия паспорта
       %th Номер паспорта
+      %th Марка
+      %th Класс
+      %th Госномер
+      %th Цвет
+      %th Год выпуска
       %th
       %th
       %th
 
   %tbody
     - @driver1s.each do |driver1|
-      %tr
-        %td= driver1.fn
-        %td= driver1.sn
-        %td= driver1.ln
-        %td= driver1.birthday
-        %td= driver1.inn
-        %td= driver1.series_p
-        %td= driver1.number_p
-        %td= link_to 'Показать', driver1
-        %td= link_to 'Править', edit_driver1_path(driver1)
-        %td= link_to 'Уничтожить', driver1, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'Новый водитель', new_driver1_path
+      %tr.table-active
+        %td.center= driver1.fn
+        %td.center= driver1.sn
+        %td.center= driver1.ln
+        %td.center= driver1.birthday
+        %td.center= driver1.inn
+        %td.center= driver1.series_p
+        %td.center= driver1.number_p
+        %td.center= driver1.cars
+        %td.right
+          = link_to edit_driver1_path(driver1), class: 'btn btn-primary' do
+            = fa_icon :edit
+            = t('buttons.edit')
+          = link_to driver1, class: 'btn btn-info' do
+            = fa_icon "eye"
+            = t('buttons.show')
+          = link_to driver1, :method => :delete, :data => { :confirm => t('buttons.confirm.driver1') }, class: 'btn btn-danger' do
+            = fa_icon :times
+            = t('buttons.destroy')
