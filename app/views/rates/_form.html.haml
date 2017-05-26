@@ -5,24 +5,32 @@
       %ul
         - @rate.errors.full_messages.each do |msg|
           %li= msg
+  .container
+    .row
+      .col-md-5
+        .form-group
+          = f.label :name_r
+          %br
+          = f.text_field :name_r
+      .col-md-5
+        .form-group
+          = f.label :price
+          %br
+          = f.text_field :price
+      .col-md-5
+        .form-group
+          = f.label :times_of_day
+          %br
+          = f.select :times_of_day, [['День','День'],['Ночь','Ночь']]
+      .col-md-5
+        .form-group
+          = f.label :range
+          %br
+          = f.select :range, [['В пределах МКАД','В пределах МКАД'],['За МКАД','За МКАД'],['Подмосковье','Подмосковье']]
 
-  .col-md-6
-    .form-group
-      = f.label :name_r
-      = f.text_area :name_r
-  .col-md-6
-    .form-group
-      = f.label :price
-      = f.text_field :price
-  .col-md-12
-    .form-group
-      = f.label :times_of_day
-      = f.select :times_of_day, [['День','День'],['Ночь','Ночь']]
-  .col-md-12
-    .form-group
-      = f.label :range
-      = f.select :range, [['В пределах МКАД','В пределах МКАД'],['За МКАД','За МКАД'],['Подмосковье','Подмосковье']]
-  .actions
-  .col-md-12
-    .form-group
-      = f.submit 'Сохранить', class: 'btn btn-primary'
+  .container
+    .row
+      .actions
+        .col-md-12
+        .form-group
+          = f.submit 'Сохранить', class: 'btn btn-primary'

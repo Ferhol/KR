@@ -4,6 +4,9 @@ ru:
     company:
       short_name: МПУ
       department: Кафедра
+    driver1: Водители
+    order: Заказы
+    search: Поиск заказа
   helpers:
     submit:
       create: Сохранить
@@ -52,6 +55,7 @@ ru:
       edit: Редактировать заказ
       new: Новый заказ
       index: Список заказов
+      search: Поиск заказа
   views:
     pagination:
       first: ⇤

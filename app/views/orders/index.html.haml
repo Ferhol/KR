@@ -4,47 +4,43 @@
 .page-header
   %h1= t('headers.orders.index')
 
-%table.table.table-hover.table-striped
-  %caption
-    = link_to new_order_path, class: 'btn btn-success' do
-      = fa_icon :plus
-      = t('buttons.new.order')
-  %thead
-    %tr
-      %th Дата
-      %th Время
-      %th Адрес подачи такси
-      %th Предположительный адрес следования такси
-      %th Количество пассажиров
-      %th Ориентировочная длина маршрута 
-      %th Название
-      %th Время суток
-      %th Дальность поездки с точки зрения удалённости от центра Москвы
-      %th Цена за километр пути
-      %th
-      %th
-      %th
 
-  %tbody
-    - @orders.each do |order|
-      %tr.table-active
-        %td.center= order.date_o
-        %td.center= order.time_o
-        %td.center= order.address_o
-        %td.center= order.address_p
-        %td.center= order.number_p
-        %td.center= order.route_length
-        %td.center= order.rate.name_r
-        %td.center= order.rate.times_of_day
-        %td.center= order.rate.range
-        %td.center= order.rate.price
-        %td.right
-          = link_to edit_order_path(order), class: 'btn btn-primary' do
-            = fa_icon :edit
-            = t('buttons.edit')
-          = link_to order, class: 'btn btn-info' do
-            = fa_icon "eye"
-            = t('buttons.show')
-          = link_to order, :method => :delete, :data => { :confirm => t('buttons.confirm.order') }, class: 'btn btn-danger' do
-            = fa_icon :times
-            = t('buttons.destroy')
+.container
+  .row
+    .col-md-10
+      %table.table.table-hover.table-striped
+        %caption
+          = link_to new_order_path, class: 'btn btn-success' do
+            = fa_icon :plus
+            = t('buttons.new.order')
+        %thead
+          %tr
+            %th Дата
+            %th Время
+            %th Адрес подачи такси
+            %th Предположительный адрес следования такси
+            %th Количество пассажиров
+            %th Ориентировочная длина маршрута 
+            %th
+            %th
+            %th
+
+        %tbody
+          - @orders.each do |order|
+            %tr.table-active
+              %td.center= order.date_o
+              %td.center= order.time_o
+              %td.center= order.address_o
+              %td.center= order.address_p
+              %td.center= order.number_p
+              %td.center= order.route_length
+              %td.right
+                = link_to edit_order_path(order), class: 'btn btn-primary' do
+                  = fa_icon :edit
+                  = t('buttons.edit')
+                = link_to order, class: 'btn btn-info' do
+                  = fa_icon "eye"
+                  = t('buttons.show')
+                = link_to order, :method => :delete, :data => { :confirm => t('buttons.confirm.order') }, class: 'btn btn-danger' do
+                  = fa_icon :times
+                  = t('buttons.destroy')

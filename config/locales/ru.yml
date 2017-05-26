@@ -6,6 +6,7 @@ ru:
       department: Кафедра
     driver1: Водители
     order: Заказы
+    search: Поиск заказа
   helpers:
     submit:
       create: Сохранить
@@ -15,6 +16,7 @@ ru:
     edit: Редактировать
     destroy: Удалить
     show: Показать
+    search: Поиск заказа
     confirm:
       user: Действительно удалить пользователя?
       role: Действительно удалить роль?
@@ -54,6 +56,7 @@ ru:
       edit: Редактировать заказ
       new: Новый заказ
       index: Список заказов
+      search: Поиск заказа
   views:
     pagination:
       first: ⇤

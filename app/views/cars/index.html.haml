@@ -4,37 +4,41 @@
 .page-header
   %h1= t('headers.driver1s.index')
 
-%table.table.table-hover.table-striped
-  %caption
-    = link_to new_car_path, class: 'btn btn-success' do
-      = fa_icon :plus
-      = t('buttons.new.car')  
-  %thead
-    %tr
-      %th Марка
-      %th Класс
-      %th Госномер
-      %th Цвет
-      %th Год выпуска
-      %th
-      %th
-      %th
 
-  %tbody
-    - @cars.each do |car|
-      %tr.table-active
-        %td.center= car.mark
-        %td.center= car.class_c
-        %td.center= car.license_plate
-        %td.center= car.color
-        %td.center= car.year_of_issue
-        %td.right
-          = link_to edit_car_path(car), class: 'btn btn-primary' do
-            = fa_icon :edit
-            = t('buttons.edit')
-          = link_to car, class: 'btn btn-info' do
-            = fa_icon "eye"
-            = t('buttons.show')
-          = link_to car, :method => :delete, :data => { :confirm => t('buttons.confirm.car') }, class: 'btn btn-danger' do
-            = fa_icon :times
-            = t('buttons.destroy')
+.container
+  .row
+    .col-md-10
+      %table.table.table-hover.table-striped
+        %caption
+          = link_to new_car_path, class: 'btn btn-success' do
+            = fa_icon :plus
+            = t('buttons.new.car')  
+        %thead
+          %tr
+            %th Марка
+            %th Класс
+            %th Госномер
+            %th Цвет
+            %th Год выпуска
+            %th
+            %th
+            %th
+
+        %tbody
+          - @cars.each do |car|
+            %tr.table-active
+              %td.center= car.mark
+              %td.center= car.class_c
+              %td.center= car.license_plate
+              %td.center= car.color
+              %td.center= car.year_of_issue
+              %td.right
+                = link_to edit_car_path(car), class: 'btn btn-primary' do
+                  = fa_icon :edit
+                  = t('buttons.edit')
+                = link_to car, class: 'btn btn-info' do
+                  = fa_icon "eye"
+                  = t('buttons.show')
+                = link_to car, :method => :delete, :data => { :confirm => t('buttons.confirm.car') }, class: 'btn btn-danger' do
+                  = fa_icon :times
+                  = t('buttons.destroy')

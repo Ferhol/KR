@@ -120,13 +120,6 @@ class Driver1sController < ApplicationController
         if @current_role_user.try(:is_admin?)
           return true
         end
-      else
-        if @current_role_user.try(:is_operator?)
-          return false
-        end
-        if @current_role_user.try(:is_admin?)
-          return true
-        end
       end
     end 
 end

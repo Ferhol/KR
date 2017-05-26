@@ -9,6 +9,15 @@ class OrdersController < ApplicationController
     @orders = Order.all
   end
 
+  def search
+    if params.has_key?('search')
+      @orders = Order.search(params['search'])
+    else
+      @orders = []
+    end
+    params['search'] ||= {}
+  end
+
   # GET /orders/1
   # GET /orders/1.json
   def show
@@ -76,13 +85,6 @@ class OrdersController < ApplicationController
     end
     def check_ctr_auth()
       case action_name.to_sym
-      when :show
-        if @current_role_user.try(:is_admin?)
-          return true
-        end
-        if @current_role_user.try(:is_operator?)
-          return true
-        end
       when :index
         if @current_role_user.try(:is_admin?)
           return true
@@ -118,11 +120,18 @@ class OrdersController < ApplicationController
         if @current_role_user.try(:is_admin?)
           return true
         end
-      else
-        if @current_role_user.try(:is_operator?)
-          return false
-        end
+      when :show
         if @current_role_user.try(:is_admin?)
+          return true
+        end
+        if @current_role_user.try(:is_operator?)
+          return true
+        end
+      when :search
+        if @current_role_user.try(:is_admin?)
+          return true
+        end
+        if @current_role_user.try(:is_operator?)
           return true
         end
       end

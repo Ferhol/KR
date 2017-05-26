@@ -1,0 +1,96 @@
+=breadcrumb_tag do
+  %li.active
+    = link_to 'Список заказов', orders_path
+  %li
+    = t('headers.orders.search')
+
+
+.page-header
+  %h1= t('headers.orders.search')
+
+.container
+  = form_tag(search_orders_path(), :method => "get") do
+    .row
+      .col-md-5
+        .form-group
+          = label_tag 'search', "Адрес подачи такси"
+          = text_field_tag 'search[address_o]', params['search']['address_o'], placeholder: "Введите дату заказа", class: 'form-control'
+
+      .col-md-5
+        .form-group
+          = label_tag 'search', "Предположительный адрес следования такси"
+          = text_field_tag 'search[address_p]', params['search']['address_p'], placeholder: "Введите дату заказа", class: 'form-control'
+
+
+      .col-md-5
+        .form-group
+          = label_tag 'search', "Дата"
+          .input-group.date.datepicker
+            = text_field_tag 'search[date_o]', params['search']['date_o'], placeholder: "Введите дату заказа", class: 'form-control'
+            %span.input-group-addon
+              %span.glyphicon.glyphicon-calendar
+
+      .col-md-5
+        .form-group
+          = label_tag 'search', "Количество пассажиров"
+          = number_field_tag 'search[number_p]', params['search']['number_p'], placeholder: "Введите дату заказа", class: 'form-control'
+
+      .col-md-5
+        .form-group
+          = label_tag 'search', "Ориентировочная длина маршрута"
+          = text_field_tag 'search[route_length]', params['search']['route_length'], placeholder: "Введите дату заказа", class: 'form-control'
+
+    .row
+      .col-md-5
+        .form-group
+          = label_tag 'search', "Название тарифа"
+          = text_field_tag 'search[name_r]', params['search']['name_r'], placeholder: "Введите дату заказа", class: 'form-control'
+
+      .col-md-5
+        .form-group
+          = label_tag 'search', "Время суток"
+          = select_tag 'search[times_of_day]', options_for_select(["День", "Ночь", " "], " "), class: 'form-control'
+
+      .col-md-5
+        .form-group
+          = label_tag 'search', "Дальность поездки"
+          = select_tag 'search[range]', options_for_select(["В пределах МКАД","За МКАД","Подмосковье"," "]," "), class: 'form-control'
+
+      .col-md-5
+        .form-group
+          = label_tag 'search', "Цена за километр пути"
+          = text_field_tag 'search[price]', params['search']['price'], placeholder: "Введите дату заказа", class: 'form-control'
+    .row
+      .col-md-10
+        .form-group
+          = submit_tag(:search_button, value: 'Поиск', class: 'btn btn-default')
+          = link_to  orders_path, class: 'btn btn-warning' do
+            = fa_icon :backward
+            = t('buttons.back')
+          = link_to root_path, class: "btn btn-primary" do
+            = fa_icon "home"
+            = t('buttons.home')
+
+%table.table.table-hover.table-striped
+  %caption
+    %thead
+      %tr
+      %th Адрес подачи такси
+      %th Предположительный адрес следования такси
+      %th Дата
+      %th Количество пассажиров
+      %th Ориентировочная длина маршрута 
+      %th
+
+    %tbody
+      - @orders.each do |order|
+        %tr.table-active
+        %td.center= order.address_o
+        %td.center= order.address_p
+        %td.center= order.date_o
+        %td.center= order.number_p
+        %td.center= order.route_length
+        %td.right
+          = link_to order, class: 'btn btn-info' do
+            = fa_icon "eye"
+            = t('buttons.show')

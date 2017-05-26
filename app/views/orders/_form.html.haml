@@ -6,63 +6,70 @@
         - @order.errors.full_messages.each do |msg|
           %li= msg
 
-  .col-md-6
-    .form-group
-      = f.label :date_o
-      .input-group.date.datepicker
-        = f.text_field(:date_o, value: lnil(f.object.date_o), class: 'form-control')
-        %span.input-group-addon
-          %span.glyphicon.glyphicon-calendar
-  .col-md-6
-    .form-group
-    = f.label :time_o
-    %br
-    = f.time_select :time_o
-  .col-md-6
-    .form-group
-    = f.label :address_o
-    %br
-    = f.text_area :address_o
-  .col-md-6
-    .form-group
-    = f.label :address_p
-    %br
-    = f.text_area :address_p
-  .col-md-6
-    .form-group
-    = f.label :number_p
-    %br
-    = f.number_field :number_p
-  .col-md-6
-    .form-group
-    = f.label :route_length
-    %br
-  = f.text_field :route_length
-  .col-md-12
-    .form-group
-      Тариф
-  =f.fields_for :rate do |fm|
-    .col-md-12
-      .form-group
-        = fm.label :name_r, "Название"
-        %br
-        = fm.text_area :name_r
-    .col-md-12
-      .form-group
-        = fm.label :times_of_day, "Время суток"
-        %br
-        = fm.select :times_of_day, [['День','День'],['Ночь','Ночь']]
-    .col-md-12
-      .form-group
-        = fm.label :range, "Дальность поездки с точки зрения удалённости от центра Москвы"
-        %br
-        = fm.select :range, [['В пределах МКАД','В пределах МКАД'],['За МКАД','За МКАД'],['Подмосковье','Подмосковье']]
-    .col-md-12
-      .form-group
-        = fm.label :price, "Цена за километр пути"
-        %br
-        = fm.text_field :price
-  .actions
-  .col-md-12
-    .form-group
-      = f.submit 'Сохранить', class: 'btn btn-primary'
+  .container
+    .row
+      .col-md-5
+        .form-group
+          = f.label :date_o
+          .input-group.date.datepicker
+            = f.text_field(:date_o, value: lnil(f.object.date_o), class: 'form-control')
+            %span.input-group-addon
+              %span.glyphicon.glyphicon-calendar
+      .col-md-5
+        .form-group
+          = f.label :time_o
+          %br
+          = f.time_select :time_o
+      .col-md-5
+        .form-group
+          = f.label :address_o
+          %br
+          = f.text_area :address_o
+      .col-md-5
+        .form-group
+          = f.label :address_p
+          %br
+          = f.text_field :address_p
+      .col-md-5
+        .form-group
+          = f.label :number_p
+          %br
+          = f.number_field :number_p
+      .col-md-5
+        .form-group
+          = f.label :route_length
+          %br
+          = f.text_field :route_length
+  .container
+    .row
+      .col-md-12
+        .form-group
+          %h2 Тариф
+          =f.fields_for :rate do |fm|
+            .col-md-5
+              .form-group
+                = fm.label :name_r, "Название"
+                %br
+                = fm.text_field :name_r
+            .col-md-5
+              .form-group
+                = fm.label :times_of_day, "Время суток"
+                %br
+                = fm.select :times_of_day, [['День','День'],['Ночь','Ночь']]
+            .col-md-5
+              .form-group
+                = fm.label :range, "Дальность поездки"
+                %br
+                = fm.select :range, [['В пределах МКАД','В пределах МКАД'],['За МКАД','За МКАД'],['Подмосковье','Подмосковье']]
+            .col-md-5
+              .form-group
+                = fm.label :price, "Цена за километр пути"
+                %br
+                = fm.text_field :price
+
+  .container
+    .row
+      .actions
+        .col-md-12
+          .form-group
+            = f.submit 'Сохранить', class: 'btn btn-primary'

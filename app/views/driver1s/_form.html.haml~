@@ -5,63 +5,68 @@
       %ul
         - @driver1.errors.full_messages.each do |msg|
           %li= msg
-
-  .col-md-6
-    .form-group
-      = f.label :fn
-      = f.text_area :fn
-  .col-md-6
-    .form-group
-      = f.label :sn
-      = f.text_area :sn
-  .col-md-6
-    .form-group
-      = f.label :ln
-      = f.text_area :ln
-  .col-md-6
-    .form-group
-      = f.label :birthday
-      .input-group.date.datepicker
-        = f.text_field(:birthday, value: lnil(f.object.birthday), class: 'form-control')
-        %span.input-group-addon
-          %span.glyphicon.glyphicon-calendar
-  .col-md-6
-    .form-group
-      = f.label :inn
-      = f.number_field :inn
-  .col-md-6
-    .form-group
-      = f.label :series_p
-      = f.number_field :series_p
-  .col-md-12
-    .form-group
-      = f.label :number_p
-      = f.number_field :number_p
-  .col-md-12
-    .form-group
-      Автомобиль
-  =f.fields_for :cars do |fm|
-    .col-md-6
-      .form-group
-        = fm.label :mark, "Марка"
-        = fm.text_area :mark
-    .col-md-6
-      .form-group
-        = fm.label :license_plate, "Гос. номер"
-        = fm.text_field :license_plate
-    .col-md-6
-      .form-group
-        = fm.label :color, "Цвет"
-        = fm.text_field :color
-    .col-md-6
-      .form-group
-        = fm.label :class_c, "Класс"
-        = fm.select :class_c, [['Бизнес','Бизнес'],['Эконом','Эконом']]
-    .col-md-12
-      .form-group
-        = fm.label :year_of_issue, "Год выпуска"
-        = fm.number_field :year_of_issue
-  .actions
-  .col-md-12
-    .form-group
-      = f.submit 'Сохранить', class: 'btn btn-primary'
+  .container
+    .row
+      .col-md-5
+        .form-group
+          = f.label :fn
+          = f.text_field :fn
+      .col-md-5
+        .form-group
+          = f.label :sn
+          = f.text_field :sn
+      .col-md-5
+        .form-group
+          = f.label :ln
+          = f.text_field :ln
+      .col-md-5
+        .form-group
+          = f.label :birthday
+          .input-group.date.datepicker
+            = f.text_field(:birthday, value: lnil(f.object.birthday), class: 'form-control')
+            %span.input-group-addon
+              %span.glyphicon.glyphicon-calendar
+      .col-md-5
+        .form-group
+          = f.label :inn
+          = f.number_field :inn
+      .col-md-5
+        .form-group
+          = f.label :series_p
+          = f.number_field :series_p
+      .col-md-5
+        .form-group
+          = f.label :number_p
+          = f.number_field :number_p
+  .container
+    .row
+      .col-md-12
+        .form-group
+          %h2 Автомобиль
+          =f.fields_for :cars do |fm|
+            .col-md-5
+              .form-group
+                = fm.label :mark, "Марка"
+                = fm.text_field :mark
+            .col-md-5
+              .form-group
+                = fm.label :license_plate, "Гос. номер"
+                = fm.text_field :license_plate
+            .col-md-5
+              .form-group
+                = fm.label :color, "Цвет"
+                = fm.text_field :color
+            .col-md-5
+              .form-group
+                = fm.label :class_c, "Класс"
+                = fm.select :class_c, [['Бизнес','Бизнес'],['Эконом','Эконом']]
+            .col-md-5
+              .form-group
+                = fm.label :year_of_issue, "Год выпуска"
+                = fm.number_field :year_of_issue
+  .container
+    .row
+      .actions
+        .col-md-12
+          .form-group
+            = f.submit 'Сохранить', class: 'btn btn-primary'

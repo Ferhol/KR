@@ -29,7 +29,7 @@
         = t('app.driver1')
     %li
       = link_to orders_path, class: 'subitem' do
-        = fa_icon "asterisk"
+        = fa_icon "file-text"
         = t('app.order')
     %li.footer
       %div
