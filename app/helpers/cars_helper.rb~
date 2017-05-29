@@ -1,2 +1,13 @@
 module CarsHelper
+  def link_to_add_driver1(form, book)
+    new_object = Car.new()
+    creator = new_object.build_driver1
+    fields = form.fields_for(:cars, new_object, :child_index => 'new_driver1') do |fr|
+      render('driver1/one_car_form', fr: fr, i: 'Новый')
+    end
+    link_to(?#, class: 'btn btn-info', 
+        id: 'add_driver1_link', data: {content: "#{fields}"}) do 
+      fa_icon("plus") + " Новый автор" 
+    end
+  end
 end

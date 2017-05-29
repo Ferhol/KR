@@ -30,7 +30,7 @@ class RatesController < ApplicationController
 
     respond_to do |format|
       if @rate.save
-        format.html { redirect_to @rate, notice: 'Rate was successfully created.' }
+        format.html { redirect_to @rate, notice: 'Тариф создан.' }
         format.json { render :show, status: :created, location: @rate }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class RatesController < ApplicationController
   def update
     respond_to do |format|
       if @rate.update(rate_params)
-        format.html { redirect_to @rate, notice: 'Rate was successfully updated.' }
+        format.html { redirect_to @rate, notice: 'Тариф изменён.' }
         format.json { render :show, status: :ok, location: @rate }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class RatesController < ApplicationController
   def destroy
     @rate.destroy
     respond_to do |format|
-      format.html { redirect_to rates_url, notice: 'Rate was successfully destroyed.' }
+      format.html { redirect_to rates_url, notice: 'Тариф удален.' }
       format.json { head :no_content }
     end
   end
@@ -111,6 +111,13 @@ class RatesController < ApplicationController
           return true
         end
       when :destroy
+        if @current_role_user.try(:is_operator?)
+          return false
+        end
+        if @current_role_user.try(:is_admin?)
+          return true
+        end
+      else
         if @current_role_user.try(:is_operator?)
           return false
         end

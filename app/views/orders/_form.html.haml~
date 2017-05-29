@@ -24,7 +24,7 @@
         .form-group
           = f.label :address_o
           %br
-          = f.text_area :address_o
+          = f.text_field :address_o
       .col-md-5
         .form-group
           = f.label :address_p
@@ -40,6 +40,12 @@
           = f.label :route_length
           %br
           = f.text_field :route_length
+      .col-md-5
+        .form-group
+          = f.label :driver1_id
+          %br
+          = f.select(:driver1_id, options_for_select(driver1_options, f.object.driver1_id), {}, class: 'form-control')
+          = f.error_messages_for(:driver1_id)
   .container
     .row
       .col-md-12

@@ -40,7 +40,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+        format.html { redirect_to @order, notice: 'Заказ создан.' }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
@@ -54,7 +54,7 @@ class OrdersController < ApplicationController
   def update
     respond_to do |format|
       if @order.update(order_params)
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
+        format.html { redirect_to @order, notice: 'Заказ изменён.' }
         format.json { render :show, status: :ok, location: @order }
       else
         format.html { render :edit }
@@ -68,7 +68,7 @@ class OrdersController < ApplicationController
   def destroy
     @order.destroy
     respond_to do |format|
-      format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
+      format.html { redirect_to orders_url, notice: 'Заказ удален.' }
       format.json { head :no_content }
     end
   end
@@ -81,7 +81,7 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:date_o, :time_o, :address_o, :address_p, :number_p, :route_length, :driver1_id, :rate_id, rate_attributes: [:id, :_destroy, :name_r, :times_of_day, :range, :price])
+      params.require(:order).permit(:date_o, :time_o, :address_o, :address_p, :number_p, :route_length, :driver1_id, :id, :rate_id, rate_attributes: [:id, :_destroy, :name_r, :times_of_day, :range, :price])
     end
     def check_ctr_auth()
       case action_name.to_sym
@@ -120,13 +120,6 @@ class OrdersController < ApplicationController
         if @current_role_user.try(:is_admin?)
           return true
         end
-      else
-        if @current_role_user.try(:is_operator?)
-          return false
-        end
-        if @current_role_user.try(:is_admin?)
-          return true
-        end
       when :show
         if @current_role_user.try(:is_admin?)
           return true
@@ -139,6 +132,13 @@ class OrdersController < ApplicationController
           return true
         end
         if @current_role_user.try(:is_operator?)
+          return true
+        end
+      else
+        if @current_role_user.try(:is_operator?)
+          return false
+        end
+        if @current_role_user.try(:is_admin?)
           return true
         end
       end

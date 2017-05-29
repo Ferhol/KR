@@ -10,18 +10,22 @@
       .col-md-5
         .form-group
           = f.label :fn
+          %br
           = f.text_field :fn
       .col-md-5
         .form-group
           = f.label :sn
+          %br
           = f.text_field :sn
       .col-md-5
         .form-group
           = f.label :ln
+          %br
           = f.text_field :ln
       .col-md-5
         .form-group
           = f.label :birthday
+          %br
           .input-group.date.datepicker
             = f.text_field(:birthday, value: lnil(f.object.birthday), class: 'form-control')
             %span.input-group-addon
@@ -29,15 +33,27 @@
       .col-md-5
         .form-group
           = f.label :inn
+          %br
           = f.number_field :inn
       .col-md-5
         .form-group
           = f.label :series_p
+          %br
           = f.number_field :series_p
       .col-md-5
         .form-group
           = f.label :number_p
+          %br
           = f.number_field :number_p
+
+  - if @current_role_user.present? and @current_role_user.is_admin?
+    .row.bottom20
+      .col-md-12
+        = link_to_add_driver1(f, f.object)
+    - i = 0
+    =f.fields_for :car_creators do |fr|
+      = fr.hidden_field :id
+      = render('books/one_book_creator_form', fr: fr, i: i + 1)
   .container
     .row
       .col-md-12
@@ -47,22 +63,27 @@
             .col-md-5
               .form-group
                 = fm.label :mark, "Марка"
+                %br
                 = fm.text_field :mark
             .col-md-5
               .form-group
                 = fm.label :license_plate, "Гос. номер"
+                %br
                 = fm.text_field :license_plate
             .col-md-5
               .form-group
                 = fm.label :color, "Цвет"
+                %br
                 = fm.text_field :color
             .col-md-5
               .form-group
                 = fm.label :class_c, "Класс"
+                %br
                 = fm.select :class_c, [['Бизнес','Бизнес'],['Эконом','Эконом']]
             .col-md-5
               .form-group
                 = fm.label :year_of_issue, "Год выпуска"
+                %br
                 = fm.number_field :year_of_issue
   .container
     .row

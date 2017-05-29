@@ -11,22 +11,27 @@
       .col-md-5
         .form-group
           = f.label :mark
+          %br
           = f.text_field :mark
       .col-md-5
         .form-group
           = f.label :license_plate
+          %br
           = f.text_field :license_plate
       .col-md-5
         .form-group
           = f.label :color
+          %br
           = f.text_field :color
       .col-md-5
         .form-group
           = f.label :class_c
+          %br
           = f.select :class_c, [['Бизнес','Бизнес'],['Эконом','Эконом']]
       .col-md-5
         .form-group
           = f.label :year_of_issue
+          %br
           = f.number_field :year_of_issue
 
   .container

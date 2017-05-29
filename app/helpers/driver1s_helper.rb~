@@ -1,0 +1,17 @@
+module Driver1sHelper
+  def driver1_options
+    Driver1.all.pluck('fn','sn','ln','birthday','inn','series_p','number_p','id')
+  end
+
+  def link_to_add_car(form, car)
+    new_object = Car.new()
+    creator = new_object.build_car
+    fields = form.fields_for(:cars, new_object, :child_index => 'new_car') do |fr|
+      render('driver1/one_car_form', fr: fr, i: 'Новый')
+    end
+    link_to(?#, class: 'btn btn-info', 
+        id: 'add_car_link', data: {content: "#{fields}"}) do 
+      fa_icon("plus") + " Новый автор" 
+    end
+  end
+end

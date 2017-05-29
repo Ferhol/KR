@@ -32,7 +32,7 @@ class Driver1sController < ApplicationController
 
     respond_to do |format|
       if @driver1.save
-        format.html { redirect_to @driver1, notice: 'Driver1 was successfully created.' }
+        format.html { redirect_to @driver1, notice: 'Автомобиль создан.' }
         format.json { render :show, status: :created, location: @driver1 }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class Driver1sController < ApplicationController
   def update
     respond_to do |format|
       if @driver1.update(driver1_params)
-        format.html { redirect_to @driver1, notice: 'Driver1 was successfully updated.' }
+        format.html { redirect_to @driver1, notice: 'Водитель изменён.' }
         format.json { render :show, status: :ok, location: @driver1 }
       else
         format.html { render :edit }
@@ -60,7 +60,7 @@ class Driver1sController < ApplicationController
   def destroy
     @driver1.destroy
     respond_to do |format|
-      format.html { redirect_to driver1s_url, notice: 'Driver1 was successfully destroyed.' }
+      format.html { redirect_to driver1s_url, notice: 'Водитель удален.' }
       format.json { head :no_content }
     end
   end
@@ -114,6 +114,13 @@ class Driver1sController < ApplicationController
           return true
         end
       when :destroy
+        if @current_role_user.try(:is_operator?)
+          return false
+        end
+        if @current_role_user.try(:is_admin?)
+          return true
+        end
+      else
         if @current_role_user.try(:is_operator?)
           return false
         end

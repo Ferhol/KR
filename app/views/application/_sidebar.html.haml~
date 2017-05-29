@@ -8,21 +8,6 @@
             = item[:name]
             %span.pull-right.carret
               = fa_icon('angle-down', class: 'menu-icon')              
-          %ul.subitems{class: (item[:children].any?{ |subitem| is_open?(subitem[:controller], subitem[:action]) } ? :subopen : :subclose)}
-            - item[:children].each do |subitem|
-              %li.subitem
-                - if subitem.has_key?(:params)
-                  = link_to(url_for({controller: subitem[:controller], action: subitem[:action]}.merge(subitem[:params])), class: subitem[:class]) do        
-                    = fa_icon(subitem[:icon], class: 'menu-icon')
-                    = subitem[:name]
-                - else
-                  = link_to(url_for(controller: subitem[:controller], action: subitem[:action]), class: subitem[:class]) do        
-                    = fa_icon(subitem[:icon], class: 'menu-icon')
-                    = subitem[:name]
-        - else
-          = link_to(url_for(controller: item[:controller], action: item[:action]), class: item[:class]) do
-            = fa_icon(item[:icon], class: 'menu-icon')
-            = item[:name]
     %li
       = link_to driver1s_path, class: 'subitem' do
         = fa_icon "file-text"
@@ -31,6 +16,10 @@
       = link_to orders_path, class: 'subitem' do
         = fa_icon "file-text"
         = t('app.order')
+    %li
+      = link_to search_orders_path(), class: 'subitem' do
+        = fa_icon :search
+        = t('app.search')
     %li.footer
       %div
         © В.Ю. Радыгин

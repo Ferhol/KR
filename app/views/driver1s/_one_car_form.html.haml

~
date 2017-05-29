@@ -1,0 +1,16 @@
+.col-md-6
+  %div{class: 'panel panel-'+ (i.kind_of?(Integer) ? 'success' : 'info')}
+    .panel-heading
+      Автор
+      = i
+      %span.toright
+        = link_to_remove_creator(fr)
+      .clearfix 
+  .panel-body
+    = fr.fields_for :car do |fm|
+      = fm.hidden_field :id
+      .row
+        .col-md-6
+          .form-group
+            = fm.label :Фамилия
+            = fm.text_field:mark, class: 'form-control'

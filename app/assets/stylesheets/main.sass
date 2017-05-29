@@ -272,3 +272,17 @@ $percents: (90 85 80 75 70 65 60 55 50 40 30 20 10 5)
     padding: #{round($padding-base-vertical * $percent / 100)} #{round($padding-base-horizontal * $percent / 100)} #{round($padding-base-vertical * $percent / 100)} #{round($padding-base-horizontal * $percent / 100)}
 .bottom20
   padding-bottom: 20px
+
+@media screen and(max-width: 800px)
+  table thead
+    display: none
+  table tr
+    display: block
+    border-bottom: 3px solid #ddd
+  table td
+    display: block
+    text-align: right
+  table td:before
+    content: attr(data)
+    float: left
+    font-weight: bold

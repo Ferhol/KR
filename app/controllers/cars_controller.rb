@@ -30,7 +30,7 @@ class CarsController < ApplicationController
 
     respond_to do |format|
       if @car.save
-        format.html { redirect_to @car, notice: 'Car was successfully created.' }
+        format.html { redirect_to @car, notice: 'Автомобиль создан.' }
         format.json { render :show, status: :created, location: @car }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class CarsController < ApplicationController
   def update
     respond_to do |format|
       if @car.update(car_params)
-        format.html { redirect_to @car, notice: 'Car was successfully updated.' }
+        format.html { redirect_to @car, notice: 'Автомобиль изменён.' }
         format.json { render :show, status: :ok, location: @car }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class CarsController < ApplicationController
   def destroy
     @car.destroy
     respond_to do |format|
-      format.html { redirect_to cars_url, notice: 'Car was successfully destroyed.' }
+      format.html { redirect_to cars_url, notice: 'Автомобиль удален.' }
       format.json { head :no_content }
     end
   end
@@ -111,6 +111,13 @@ class CarsController < ApplicationController
           return true
         end
       when :destroy
+        if @current_role_user.try(:is_operator?)
+          return false
+        end
+        if @current_role_user.try(:is_admin?)
+          return true
+        end
+      else
         if @current_role_user.try(:is_operator?)
           return false
         end

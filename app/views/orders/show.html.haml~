@@ -25,16 +25,9 @@
 %p.list-group-item
   %b Ориентировочная длина маршрута:
   = @order.route_length
-
 %p.list-group-item
-  %b Название тарифа:
+  %b Водитель:
+  = @order.driver1.fn
+%p.list-group-item
+  %b Водитель:
   = @order.rate.name_r
-%p.list-group-item
-  %b Время суток:
-  = @order.rate.times_of_day
-%p.list-group-item
-  %b Дальность поездки с точки зрения удалённости от центра Москвы:
-  = @order.rate.range
-%p.list-group-item
-  %b Цена за километр пути:
-  = @order.rate.price

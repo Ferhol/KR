@@ -7,7 +7,7 @@
 
 .container
   .row
-    .col-md-1
+    .col-md-10
       %table.table.table-hover.table-striped
         %caption
           = link_to new_order_path, class: 'btn btn-success' do
@@ -21,6 +21,8 @@
             %th Предположительный адрес следования такси
             %th Количество пассажиров
             %th Ориентировочная длина маршрута 
+            %th Водитель
+            %th Тариф
             %th
             %th
             %th
@@ -34,6 +36,7 @@
               %td.center= order.address_p
               %td.center= order.number_p
               %td.center= order.route_length
+              %td.center= order.driver1.fn
               %td.right
                 = link_to edit_order_path(order), class: 'btn btn-primary' do
                   = fa_icon :edit
