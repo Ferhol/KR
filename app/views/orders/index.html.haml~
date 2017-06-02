@@ -36,7 +36,8 @@
               %td.center= order.address_p
               %td.center= order.number_p
               %td.center= order.route_length
-              %td.center= order.driver1.fn
+              %td.center= order.driver1
+              %td.center= order.rate
               %td.right
                 = link_to edit_order_path(order), class: 'btn btn-primary' do
                   = fa_icon :edit

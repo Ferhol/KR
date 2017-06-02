@@ -40,26 +40,18 @@
           = label_tag 'search', "Ориентировочная длина маршрута"
           = text_field_tag 'search[route_length]', params['search']['route_length'], class: 'form-control'
 
-    .row
       .col-md-5
         .form-group
-          = label_tag 'search', "Название тарифа"
-          = text_field_tag 'search[name_r]', params['search']['name_r'], class: 'form-control'
+          = label_tag 'search', "Водитель"
+          %br
+          = text_field_tag 'search[driver1_id]', params['search']['driver1_id'], class: 'form-control'
 
       .col-md-5
         .form-group
-          = label_tag 'search', "Время суток"
-          = select_tag 'search[times_of_day]', options_for_select(["День", "Ночь", " "], " "), class: 'form-control'
+          = label_tag 'search', "Тариф"
+          %br
+          = text_field_tag 'search[rate_id]', params['search']['rate_id'], class: 'form-control'
 
-      .col-md-5
-        .form-group
-          = label_tag 'search', "Дальность поездки"
-          = select_tag 'search[range]', options_for_select(["В пределах МКАД","За МКАД","Подмосковье"," "],"params['search']['range'] "), class: 'form-control'
-
-      .col-md-5
-        .form-group
-          = label_tag 'search', "Цена за километр пути"
-          = text_field_tag 'search[price]', params['search']['price'], class: 'form-control'
     .row
       .col-md-10
         .form-group
@@ -91,7 +83,8 @@
         %td.center= order.date_o
         %td.center= order.number_p
         %td.center= order.route_length
-        %td.center= order.driver1.fn
+        %td.center= order.driver1_id
+        %td.center= order.rate_id
         %td.right
           = link_to order, class: 'btn btn-info' do
             = fa_icon "eye"

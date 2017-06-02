@@ -1,0 +1,15 @@
+.col-md-6
+  %div{class: 'panel panel-'+ (i.kind_of?(Integer) ? 'success' : 'info')}
+    .panel-heading
+      Автомобиль
+      = i
+      %span.toright
+        = link_to_remove_car(fr)
+      .clearfix
+    .panel-body
+      .row
+        .col-md-5
+          .form-group
+            = fr.label :mark
+            %br
+            = fr.select(:mark, options_for_select(car_options, fr.object.mark), {}, class: 'form-control')

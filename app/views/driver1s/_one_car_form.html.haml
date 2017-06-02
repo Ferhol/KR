@@ -1,0 +1,35 @@
+.col-md-6
+  %div{class: 'panel panel-'+ (i.kind_of?(Integer) ? 'success' : 'info')}
+    .panel-heading
+      Автомобиль
+      = i
+      %span.toright
+        = link_to_remove_car(fr)
+      .clearfix
+    .panel-body
+      .row
+        .col-md-10
+          .form-group
+            = fr.label :mark
+            %br
+            = fr.text_field :mark
+        .col-md-10
+          .form-group
+            = fr.label :license_plate
+            %br
+            = fr.text_field :license_plate
+        .col-md-10
+          .form-group
+            = fr.label :color
+            %br
+            = fr.text_field :color
+        .col-md-10
+          .form-group
+            = fr.label :class_c
+            %br
+            = fr.select :class_c, [['Бизнес','Бизнес'],['Эконом','Эконом']]
+        .col-md-10
+          .form-group
+            = fr.label :year_of_issue
+            %br
+            = fr.number_field :year_of_issue

@@ -49,11 +49,12 @@
   - if @current_role_user.present? and @current_role_user.is_admin?
     .row.bottom20
       .col-md-12
-        = link_to_add_driver1(f, f.object)
+        = link_to_add_car(f, f.object)
     - i = 0
-    =f.fields_for :car_creators do |fr|
+    =f.fields_for :cars do |fr|
       = fr.hidden_field :id
-      = render('books/one_book_creator_form', fr: fr, i: i + 1)
+      = render('driver1s/one_car_form', fr: fr, i: i + 1)
+
   .container
     .row
       .col-md-12

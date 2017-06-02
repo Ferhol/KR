@@ -45,33 +45,12 @@
           = f.label :driver1_id
           %br
           = f.select(:driver1_id, options_for_select(driver1_options, f.object.driver1_id), {}, class: 'form-control')
-          = f.error_messages_for(:driver1_id)
-  .container
-    .row
-      .col-md-12
+
+      .col-md-5
         .form-group
-          %h2 Тариф
-          =f.fields_for :rate do |fm|
-            .col-md-5
-              .form-group
-                = fm.label :name_r, "Название"
-                %br
-                = fm.text_field :name_r
-            .col-md-5
-              .form-group
-                = fm.label :times_of_day, "Время суток"
-                %br
-                = fm.select :times_of_day, [['День','День'],['Ночь','Ночь']]
-            .col-md-5
-              .form-group
-                = fm.label :range, "Дальность поездки"
-                %br
-                = fm.select :range, [['В пределах МКАД','В пределах МКАД'],['За МКАД','За МКАД'],['Подмосковье','Подмосковье']]
-            .col-md-5
-              .form-group
-                = fm.label :price, "Цена за километр пути"
-                %br
-                = fm.text_field :price
+          = f.label :driver1_id
+          %br
+          = f.select(:rate_id, options_for_select(rate_options, f.object.rate_id), {}, class: 'form-control')
 
   .container
     .row

@@ -1,0 +1,29 @@
+I"q(function() {
+  var car_ready;
+
+  this.delete_one_car = function(link) {
+    if (confirm("Вы уверены?")) {
+      link.parent().find("input[type=hidden].remove_fields").first().val("1");
+      return link.parent().parent().parent().parent().hide();
+    }
+  };
+
+  this.del_all_cars = function() {
+    $('a.remove_car').on('click', function() {
+      window.delete_one_car($(this));
+      return false;
+    });
+    return false;
+  };
+
+  car_ready = function() {
+    window.add_new_car();
+    return window.del_all_cars();
+  };
+
+  $(document).on('page:load', car_ready);
+
+  $(document).ready(car_ready);
+
+}).call(this);
+:ET
