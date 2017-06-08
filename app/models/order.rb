@@ -13,7 +13,7 @@ class Order < ApplicationRecord
     {only_float: true}
 
   def self.search(params)
-    result = Order.includes(:rate).references(:rate)
+    result = Order.includes(:rate, :driver1).references(:rate, :driver1)
     if params['date_o'].present?
       result = result.where(date_o: params['date_o'])
     end
@@ -29,11 +29,11 @@ class Order < ApplicationRecord
     if params['route_length'].present?
       result = result.where(route_length: params['route_length'])
     end
-    if params['driver1_id'].present?
-      result = result.where(driver1_id: params['driver1_id'])
+    if params['fn'].present?
+      result = result.where(driver1s: {fn: params['fn']})
     end
-    if params['rate_id'].present?
-      result = result.where(rate_id: params['rate_id'])
+    if params['name_r'].present?
+      result = result.where(rates: {name_r: params['name_r']})
     end
     result.all
   end

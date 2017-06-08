@@ -27,7 +27,7 @@
   = @order.route_length
 %p.list-group-item
   %b Водитель:
-  = @order.driver1_id
+  = @order.driver1.fn
 %p.list-group-item
   %b Тариф:
-  = @order.rate_id
+  = @order.rate.name_r

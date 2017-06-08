@@ -48,7 +48,7 @@
 
       .col-md-5
         .form-group
-          = f.label :driver1_id
+          = f.label :rate_id
           %br
           = f.select(:rate_id, options_for_select(rate_options, f.object.rate_id), {}, class: 'form-control')
 

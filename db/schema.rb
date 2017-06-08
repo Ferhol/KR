@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 20170501085108) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.index ["driver1_id"], name: "index_cars_on_driver1_id", using: :btree
-    t.index ["license_plate"], name: "index_cars_on_license_plate", unique: true, using: :btree
   end
 
   create_table "delayed_jobs", force: :cascade do |t|

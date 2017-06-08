@@ -1,6 +1,6 @@
 ru:
   app:
-    name: Базовое приложение
+    name: Таксопарк
     company:
       short_name: МПУ
       department: Кафедра
@@ -94,7 +94,7 @@ ru:
         inn: ИНН
         series_p: Серия паспорта
         number_p: Номер паспорта
-      car:
+      car: &cars
         mark: Марка
         class_c: Класс
         license_plate: Госномер автомобиля
@@ -108,8 +108,8 @@ ru:
         address_p: Предположительный адрес следования такси
         number_p: Количество пассажиров
         route_length: Ориентировочная длина маршрута
-        driver1: Водитель
-        rate: Тариф
+        driver1_id: Водитель
+        rate_id: Тариф
       rate:
         name_r: Название
         times_of_day: Время суток

@@ -13,4 +13,5 @@ class Driver1 < ApplicationRecord
     {only_integer: true}
   validates :number_p, presence: true, uniqueness: true, numericality:
     {only_integer: true}
+
 end

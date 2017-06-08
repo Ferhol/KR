@@ -1,7 +1,7 @@
 = form_for @driver1 do |f|
   - if @driver1.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@driver1.errors.count, "error")} prohibited this driver1 from being saved:"
+      %h2= "При сохранении произошли ошибки:"
       %ul
         - @driver1.errors.full_messages.each do |msg|
           %li= msg

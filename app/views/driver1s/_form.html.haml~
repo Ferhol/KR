@@ -1,7 +1,7 @@
 = form_for @driver1 do |f|
   - if @driver1.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@driver1.errors.count, "error")} prohibited this driver1 from being saved:"
+      %h2= "При сохранении произошли ошибки"
       %ul
         - @driver1.errors.full_messages.each do |msg|
           %li= msg
@@ -55,37 +55,6 @@
       = fr.hidden_field :id
       = render('driver1s/one_car_form', fr: fr, i: i + 1)
 
-  .container
-    .row
-      .col-md-12
-        .form-group
-          %h2 Автомобиль
-          =f.fields_for :cars do |fm|
-            .col-md-5
-              .form-group
-                = fm.label :mark, "Марка"
-                %br
-                = fm.text_field :mark
-            .col-md-5
-              .form-group
-                = fm.label :license_plate, "Гос. номер"
-                %br
-                = fm.text_field :license_plate
-            .col-md-5
-              .form-group
-                = fm.label :color, "Цвет"
-                %br
-                = fm.text_field :color
-            .col-md-5
-              .form-group
-                = fm.label :class_c, "Класс"
-                %br
-                = fm.select :class_c, [['Бизнес','Бизнес'],['Эконом','Эконом']]
-            .col-md-5
-              .form-group
-                = fm.label :year_of_issue, "Год выпуска"
-                %br
-                = fm.number_field :year_of_issue
   .container
     .row
       .actions
